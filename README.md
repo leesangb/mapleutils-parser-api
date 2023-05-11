@@ -1,38 +1,216 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Unofficial maplestory api
 
-## Getting Started
+## About
 
-First, run the development server:
+메이플스토리 캐릭터 장비를 가져오는 비공식 API입니다. 공식 홈페이지에 정보가 공개된 캐릭터를 검색하여 해당 캐릭터의 기본정보, 기본 스펙, 장착한 장비 아이템, 펫장비, 아케인
+심볼을 추출합니다.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+## Usage
+
+try: https://mapleutils-parser-api-leesangb.vercel.app/
+
+## 파싱되는 스탯
+
+```ts
+const statList = [
+    'str', // 힘
+    'dex', // 덱
+    'int', // 인
+    'luk', // 럭
+    'strP', // 힘퍼
+    'dexP', // 덱퍼
+    'intP', // 인퍼
+    'lukP', // 럭퍼
+    'hp', // hp
+    'hpP', // hp퍼
+    'mp', // mp
+    'mpP', // mp퍼
+    'atk', // 공격력
+    'atkP', // 공격력퍼
+    'mAtk', // 마력
+    'mAtkP', // 마력퍼
+    'def', // 물리방어력
+    'defP', // 물리방어력%
+    'speed', // 이동속도
+    'jump', // 점프력
+    'ignoreDef', // 방어율무시%
+    'mobDmg', // 일반몬스터데미지%
+    'bossDmg', // 보스몬스터데미지%
+    'dmg', // 데미지%
+    'allStat', // 올스탯
+    'allStatP', // 올스탯%
+    'crit', // 크리티컬확률
+    'critDmg', // 크리티컬데미지%
+    'buff', // 버프지속시간
+    'statusDmg', // 상태이상데미지
+    'arcane', // 아케인포스
+    'lvNAtk', // lvN당공1
+    'lvNmAtk', // lvN당마1
+    'lv9Str', // lv9당힘N
+    'lv9Dex', // lv9당덱N
+    'lv9Int', // lv9당인N
+    'lv9Luk', // lv9당럭N
+    'meso', // 메소획득량
+    'drop', // 아이템드롭률
+    'hpHeal', // 회복
+    'passive', // 패시브1렙
+    'reuse', // 재사용
+    'exp', // 획득 경험치
+] as const;
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Output 예시
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```json
+{
+  "name": "상빈",
+  "world": "크로아",
+  "guild": "꿈길",
+  "job": "듀얼블레이더",
+  "level": 253,
+  "imageUrl": "https://avatar.maplestory.nexon.com/Character/180/DIDFBINAMEPMOAFKNCMDJNDMMIDKJBHHNLKKKKKGDDKJBFKBPIKKJEHKBBEMCJPHIEINOKJNNAACNNHECPKOMHHLKDJPCNEELKAGDLLJAAHHMHMIECPIKHGDAKGHDELGKIDBPCIDABNNILCHBDGONHOPDEOILIOFPPJGECFLOHDKOBPMFIIJPJPCKEMPDBPNJCAHDMCKBKGJGJGMDKPNHPEIONFHJKCDALLEJHJJNNGKEOGKEPFGFIKAOGCNHJJO.png",
+  "traits": {
+    "ambition": 100,
+    "insight": 100,
+    "willpower": 100,
+    "diligence": 100,
+    "empathy": 100,
+    "charm": 100
+  },
+  "spec": {
+    "statAtkLow": 5003901,
+    "statAtkHigh": 5559889,
+    "hp": 45230,
+    "mp": 27811,
+    "str": 1781,
+    "dex": 3279,
+    "int": 1597,
+    "luk": 23817,
+    "critDmg": 56,
+    "bossDmg": 272,
+    "ignoreDef": 83,
+    "resistance": 54,
+    "stance": 100,
+    "def": 31370,
+    "speed": 160,
+    "jump": 123,
+    "starForce": 241,
+    "arcaneForce": 1040,
+    "hypers": {
+      "atk": 24,
+      "mAtk": 24,
+      "luk": 210,
+      "crit": 7,
+      "critDmg": 11,
+      "ignoreDef": 30,
+      "dmg": 33,
+      "bossDmg": 39
+    },
+    "abilities": {
+      "bossDmg": 20,
+      "reuse": 10,
+      "statusDmg": 7
+    }
+  },
+  "equipments": [
+    {
+      "name": "골드 메이플리프 엠블렘",
+      "imageUrl": "https://avatar.maplestory.nexon.com/ItemIcon/KEOLLEOA.png",
+      "category": "엠블렘",
+      "upgrade": 0,
+      "base": { "str": 10, "dex": 10, "int": 10, "luk": 10, "atk": 2, "mAtk": 2 },
+      "scroll": {},
+      "grade": "legendary",
+      "star": 0,
+      "potential": { "grade": "legendary", "effects": [{ "atkP": 12 }, { "atkP": 9 }, { "dexP": 9 }] },
+      "additional": { "grade": "rare", "effects": [{ "dmg": 3 }, { "def": 50 }, { "mp": 50 }] },
+      "flame": {}
+    },
+    {
+      "name": "아케인셰이드 대거",
+      "imageUrl": "https://avatar.maplestory.nexon.com/ItemIcon/KEMBJFHA.png",
+      "category": "단검 (한손무기)",
+      "upgrade": 8,
+      "base": { "dex": 100, "luk": 100, "atk": 276, "bossDmg": 30, "ignoreDef": 20 },
+      "scroll": { "dex": 40, "luk": 64, "hp": 255, "mp": 255, "atk": 179 },
+      "grade": "legendary",
+      "star": 15,
+      "potential": { "grade": "legendary", "effects": [{ "bossDmg": 35 }, { "dmg": 12 }, { "crit": 12 }] },
+      "flame": { "dex": 33, "mp": 1800, "atk": 133, "dmg": 3 },
+      "soul": { "allStat": 15 }
+    }
+  ],
+  "arcanes": [
+    {
+      "name": "아케인심볼 : 소멸의 여로",
+      "stat": { "luk": 1600 },
+      "level": 14,
+      "experience": 230,
+      "requiredExperience": 207
+    },
+    {
+      "name": "아케인심볼 : 츄츄 아일랜드",
+      "stat": { "luk": 1700 },
+      "level": 15,
+      "experience": 238,
+      "requiredExperience": 236
+    },
+    {
+      "name": "아케인심볼 : 레헬른",
+      "stat": { "luk": 1500 },
+      "level": 13,
+      "experience": 43,
+      "requiredExperience": 180
+    },
+    {
+      "name": "아케인심볼 : 아르카나",
+      "stat": { "luk": 1700 },
+      "level": 15,
+      "experience": 355,
+      "requiredExperience": 236
+    },
+    {
+      "name": "아케인심볼 : 모라스",
+      "stat": { "luk": 1800 },
+      "level": 16,
+      "experience": 309,
+      "requiredExperience": 267
+    },
+    {
+      "name": "아케인심볼 : 에스페라",
+      "stat": { "luk": 1800 },
+      "level": 16,
+      "experience": 162,
+      "requiredExperience": 267
+    }
+  ],
+  "cashEquipments": [
+    {
+      "name": "8주년 음표 시트린",
+      "upgrade": 0,
+      "imageUrl": "https://avatar.maplestory.nexon.com/ItemIcon/KEPCIFLA.png",
+      "category": "모자",
+      "scroll": {},
+      "base": {}
+    },
+    {
+      "name": "발그레 발그레",
+      "upgrade": 0,
+      "imageUrl": "https://avatar.maplestory.nexon.com/ItemIcon/KEPDJEJI.png",
+      "category": "얼굴장식",
+      "scroll": {},
+      "base": {}
+    }
+  ],
+  "petEquipments": [
+    {
+      "name": "노란색 모자",
+      "upgrade": 0,
+      "imageUrl": "https://avatar.maplestory.nexon.com/ItemIcon/KEHCJHOA.png",
+      "category": "펫장비",
+      "scroll": {},
+      "base": {}
+    }
+  ]
+}
+```
