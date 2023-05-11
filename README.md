@@ -7,7 +7,7 @@
 
 ## Usage
 
-try: https://mapleutils-parser-api-leesangb.vercel.app/
+try: https://mapleutils-parser-api.vercel.app/
 
 ## 파싱되는 스탯
 
