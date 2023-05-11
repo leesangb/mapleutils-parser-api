@@ -42,7 +42,10 @@ export default function Home() {
                 url <a target={'_blank'} href={url} rel="noreferrer">{url}</a>
                 </>}
                 <p>
-                    같은요청 캐시 시간 5분
+                    주의: 같은요청 캐시 시간 5분
+                </p>
+                <p>
+                    공홈 캐릭터 정보공개 설정 하러가기 <a href={'https://maplestory.nexon.com/MyMaple/Account/Character/Visibility'}>https://maplestory.nexon.com/MyMaple/Account/Character/Visibility</a>
                 </p>
             </main>
         </>
