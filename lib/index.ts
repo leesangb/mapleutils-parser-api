@@ -41,9 +41,17 @@ export class MapleUtilsParser {
 
         const searchData = await rankingSearch.text();
 
-        const characterLink = this.homePageParser.getCharacterLink(name, searchData);
-        if (!characterLink)
-            throw `'${name}' 캐릭터를 찾을 수 없습니다`;
+        let characterLink  = '';
+
+        try {
+            characterLink = this.homePageParser.getCharacterLink(name, searchData);
+        } catch (e) {
+            const rebootSearch = await fetch(`${MAPLESTORY_RANKING_SEARCH}?c=${encodeURI(name)}&w=254`);
+            if (rankingSearch.status !== 200)
+                throw `'${name}' 공식 홈페이지 랭킹 검색 오류`;
+            const rebootSearchData = await rebootSearch.text();
+            characterLink = this.homePageParser.getCharacterLink(name, rebootSearchData);
+        }
 
         console.log(`${name} --> character page`);
         const characterSpecPage = await fetch(characterLink);
