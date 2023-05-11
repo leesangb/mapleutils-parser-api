@@ -38,11 +38,11 @@ export class HomePageParser {
      * 정보가 비공개일시 에러를 던짐
      * @param html 열려있는 페이지 html
      */
-    ensureIsPublic(html: string) {
+    ensureIsPublic(html: string, scope: string) {
         const node = HTMLParser.parse(html);
         const privateDiv: NhpHTMLElement | null = node.querySelector('div.private2');
         if (privateDiv)
-            throw '캐릭터 정보가 비공개입니다';
+            throw `캐릭터 정보가 비공개입니다 (${scope})`;
     }
 
     /**

@@ -51,7 +51,7 @@ export class MapleUtilsParser {
             throw `'${name}' 캐릭터 정보 페이지 열기 오류`;
 
         const specPageData = await characterSpecPage.text();
-        this.homePageParser.ensureIsPublic(specPageData);
+        this.homePageParser.ensureIsPublic(specPageData, '기본 정보');
 
         const spec = this.specParser.parse(specPageData);
         const generalInformation = this.generalInformationParser.parse(specPageData);
@@ -81,7 +81,7 @@ export class MapleUtilsParser {
         if (equipmentPage.status !== 200)
             throw '장비 페이지 열기 오류';
         const equipmentPageData = await equipmentPage.text();
-        this.homePageParser.ensureIsPublic(equipmentPageData);
+        this.homePageParser.ensureIsPublic(equipmentPageData, '장비');
 
         const equipmentLinks = this.homePageParser.getEquipmentLinks(equipmentPageData);
         const [baseHtml, cashHtml, symbolHtml] = await Promise.all([
@@ -107,6 +107,7 @@ export class MapleUtilsParser {
             throw '펫장비 페이지 열기 오류';
 
         const equipmentPageData = await equipmentPage.text();
+        this.homePageParser.ensureIsPublic(equipmentPageData, '펫');
 
         const equipmentLinks: string[] = this.homePageParser.getPetEquipmentLinks(equipmentPageData);
         const equipmentHtml = await this.getAllHtmls(equipmentLinks);
